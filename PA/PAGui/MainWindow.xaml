@@ -1,0 +1,184 @@
+﻿<Window x:Class="PAGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:localSource="clr-namespace:PAGui"
+        xmlns:local="clr-namespace:PAGui.Visualizer"
+        mc:Ignorable="d"
+        Title="Pattern Analyser" 
+        Height="650" 
+        Width="1200"
+        MinHeight="600" 
+        MinWidth="1000" 
+        Icon="Graph.ico"
+        WindowStartupLocation="CenterScreen"
+        Name="PAMainWindow" Closing="PAMainWindow_Closing">
+    <Window.CommandBindings>
+        <CommandBinding
+        Command="{x:Static localSource:MainWindow.VoronoiDiagrammCommand}" 
+        CanExecute="VoronoiDiagramCommandHandler_CanExecute" 
+        Executed="VoronoiDiagramCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.DelaunayDiagrammCommand}" 
+        CanExecute="DelaunayDiagramCommandHandler_CanExecute" 
+        Executed="DelaunayDiagramCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnErosionCommand}" 
+        CanExecute="BtnErosionCommandHandler_CanExecute" 
+        Executed="BtnErosionCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnDilatationCommand}" 
+        CanExecute="BtnDilatationCommandHandler_CanExecute" 
+        Executed="BtnDilatationCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnOpeningCommand}" 
+        CanExecute="BtnOpeningCommandHandler_CanExecute" 
+        Executed="BtnOpeningCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnClosingCommand}" 
+        CanExecute="BtnClosingCommandHandler_CanExecute" 
+        Executed="BtnClosingCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnASFCommand}" 
+        CanExecute="BtnASFCommandHandler_CanExecute" 
+        Executed="BtnASFCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnGReconstructionCommand}" 
+        CanExecute="BtnGReconstructionCommandHandler_CanExecute" 
+        Executed="BtnGReconstructionCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnDistanceFunctionCommand}" 
+        CanExecute="BtnDistanceFunctionCommandHandler_CanExecute" 
+        Executed="BtnDistanceFunctionCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnSkeletonCommand}" 
+        CanExecute="BtnSkeletonCommandHandler_CanExecute" 
+        Executed="BtnSkeletonCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnOpennessCommand}" 
+        CanExecute="BtnOpennessCommandHandler_CanExecute" 
+        Executed="BtnOpennessCommandHandler_Executed" />
+        <CommandBinding  
+        Command="{x:Static localSource:MainWindow.BtnClosenessCommand}" 
+        CanExecute="BtnClosenessCommandHandler_CanExecute" 
+        Executed="BtnClosenessCommandHandler_Executed" />
+    </Window.CommandBindings>
+    <Grid>
+        <Menu VerticalAlignment="Top" Height="18">
+            <MenuItem Header="_Datei">
+                <MenuItem Header="_Datei Öffnen" Command="Open">
+                    <MenuItem.ToolTip>Datei Öffnen</MenuItem.ToolTip>
+                </MenuItem>
+                <MenuItem Header="_Drucken" Command="Print">
+                    <MenuItem.ToolTip>Drucken</MenuItem.ToolTip>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="_Beenden" Command="Close"/>
+            </MenuItem>
+            <MenuItem Header="_Diagramms">
+                <MenuItem Header="_Voronoi Diagramm" Command="{x:Static localSource:MainWindow.VoronoiDiagrammCommand}" >
+                    <MenuItem.ToolTip>Voronoi Diagramm</MenuItem.ToolTip>
+                </MenuItem>
+                <MenuItem Header="_Delaunay Diagramm" Command="{x:Static localSource:MainWindow.DelaunayDiagrammCommand}">
+                    <MenuItem.ToolTip>Delaunay Diagramm</MenuItem.ToolTip>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid Margin="0,18,0,0">
+            <local:DotViewer x:Name="MyDotViewer"></local:DotViewer>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" Margin ="6">
+            </StackPanel>
+
+            <Grid 
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Bottom"
+            Background="Transparent"
+            MinWidth="250"
+            MinHeight="90"
+            Margin="0 0 10 10" Opacity="0.8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"/>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Erosion/Dilatation" FontSize="15" FontWeight="Bold" Foreground="#FF626262" Opacity="0.7"/>
+                    <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="0" Name="tbErosionDilatation" FontSize="15" FontWeight="Bold" Foreground="#FF626262" Opacity="0.7"/>
+                    <Button Grid.Row="0" Grid.Column="2" Command="{x:Static localSource:MainWindow.BtnErosionCommand}" Content="-" FontSize="20" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Grid.Row="0" Grid.Column="3" Command="{x:Static localSource:MainWindow.BtnDilatationCommand}" Content="+" FontSize="20" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                    <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Text="Opening/Closing" FontSize="15" FontWeight="Bold" Foreground="#FF626262" Opacity="0.7"/>
+                    <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Row="1" Grid.Column="1" Text="0" Name="tbOpeningClosing" FontSize="15" FontWeight="Bold" Foreground="#FF626262" Opacity="0.7"/>
+                    <Button Grid.Row="1" Grid.Column="2" Command="{x:Static localSource:MainWindow.BtnOpeningCommand}" Content="-" FontSize="20" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Grid.Row="1" Grid.Column="3" Command="{x:Static localSource:MainWindow.BtnClosingCommand}" Content="+" FontSize="20" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Command="{x:Static localSource:MainWindow.BtnASFCommand}" Content="ASF" FontSize="15" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Grid.Column="1" Command="{x:Static localSource:MainWindow.BtnGReconstructionCommand}" Content="GR" FontSize="15" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Grid.Column="2" Command="{x:Static localSource:MainWindow.BtnDistanceFunctionCommand}" Content="DF" FontSize="15" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Grid.Column="3" Command="{x:Static localSource:MainWindow.BtnSkeletonCommand}" Content="SK" FontSize="15" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Grid.Column="4" Command="{x:Static localSource:MainWindow.BtnOpennessCommand}" Content="OPS" FontSize="15" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Grid.Column="5" Command="{x:Static localSource:MainWindow.BtnClosenessCommand}" Content="CLS" FontSize="15" Foreground="#FF626262">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.3"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

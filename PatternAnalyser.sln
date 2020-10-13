@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PA", "PA", "{A666F2E8-0C2D-4B81-97B6-76C3E330D5CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PADataProcessing", "PA\PADataProcessing\PADataProcessing.csproj", "{12642B05-4729-4E0C-9259-DD5AC75A2D4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAGui", "PA\PAGui\PAGui.csproj", "{54A8F1B6-C4D7-4D46-9A42-D7CB13F58EDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12642B05-4729-4E0C-9259-DD5AC75A2D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12642B05-4729-4E0C-9259-DD5AC75A2D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12642B05-4729-4E0C-9259-DD5AC75A2D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12642B05-4729-4E0C-9259-DD5AC75A2D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54A8F1B6-C4D7-4D46-9A42-D7CB13F58EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A8F1B6-C4D7-4D46-9A42-D7CB13F58EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A8F1B6-C4D7-4D46-9A42-D7CB13F58EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A8F1B6-C4D7-4D46-9A42-D7CB13F58EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{12642B05-4729-4E0C-9259-DD5AC75A2D4A} = {A666F2E8-0C2D-4B81-97B6-76C3E330D5CC}
+		{54A8F1B6-C4D7-4D46-9A42-D7CB13F58EDA} = {A666F2E8-0C2D-4B81-97B6-76C3E330D5CC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79D54F2E-8264-4011-BEF0-28CB7F78AF93}
+	EndGlobalSection
+EndGlobal

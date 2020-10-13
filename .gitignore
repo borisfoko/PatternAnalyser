@@ -1,0 +1,11 @@
+﻿################################################################################
+# Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
+################################################################################
+
+/PA/PADataProcessing/bin
+/PA/PADataProcessing/obj
+/PA/PAGui/bin
+/PA/PAGui/obj
+/packages/System.ObjectModel.4.3.0
+/.vs/PatternAnalyser/v16
+.vs
